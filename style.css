@@ -1,0 +1,318 @@
+/* Basic body styling, setting default font for Persian and RTL direction */
+body {
+    font-family: 'Vazirmatn', sans-serif; /* Default font for Persian */
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    min-height: 100vh;
+    direction: rtl; /* Default direction for Persian */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Styles for English language mode */
+body.en {
+    font-family: 'Arial', sans-serif; /* Fallback font for English */
+    direction: ltr; /* Left-to-right direction for English */
+}
+
+/* Container for the entire tool */
+.container {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    max-width: 800px;
+    width: 100%;
+    margin-top: 30px;
+    position: relative; /* Make container the positioning context for lang-switcher */
+    padding-top: 75px; /* Increased padding to make more space for lang-switcher */
+}
+
+/* Header styling */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    position: static; /* Ensure header is not positioned absolutely relative to container */
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 2.2em;
+    margin-bottom: 15px;
+}
+
+/* Language switcher buttons container */
+.lang-switcher {
+    position: absolute; /* Position absolutely within the container */
+    top: 15px; /* Distance from top of container */
+    right: 15px; /* Distance from right for RTL */
+    display: flex;
+    gap: 8px;
+    z-index: 10; /* Ensure it's above other content */
+}
+
+/* Adjust language switcher position for LTR (English) */
+body.en .lang-switcher {
+    right: auto; /* Reset right */
+    left: 15px; /* Distance from left for LTR */
+}
+
+.lang-switcher button {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.lang-switcher button:hover {
+    background-color: #d0d0d0;
+}
+
+.lang-switcher button.active {
+    background-color: #007bff; /* Active button color */
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Description section styling */
+.description {
+    background-color: #e9f7ef; /* Light green background */
+    border-right: 5px solid #28a745; /* Green border on the right for RTL */
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    font-size: 1.0em;
+    line-height: 1.6;
+    color: #386a42;
+}
+
+/* Adjust description border for LTR (English) */
+body.en .description {
+    border-right: none; /* Remove right border */
+    border-left: 5px solid #28a745; /* Add left border for LTR */
+}
+
+/* Headings for question sections */
+h2 {
+    color: #34495e;
+    font-size: 1.6em;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 10px;
+}
+
+/* Styling for each question group */
+.question-group {
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.question-group label {
+    display: block; /* Label takes its own line */
+    margin-bottom: 5px; /* Reduced space below the label */
+    font-weight: bold;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Style for the new descriptive text under each question */
+.question-description {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 0; /* No top margin */
+    margin-bottom: 15px; /* Space below description */
+    line-height: 1.4;
+}
+
+/* New wrapper for slider and value to control their layout */
+.slider-control {
+    display: flex; /* Use flexbox to align slider and value side-by-side */
+    align-items: center; /* Vertically align items */
+    gap: 10px; /* Space between slider and value */
+    width: 100%; /* Ensure it takes full width of its parent */
+}
+
+/* Styling for range input (slider) */
+input[type="range"] {
+    width: auto; /* Let flexbox control width */
+    flex-grow: 1; /* Allow slider to take up available space */
+    -webkit-appearance: none; /* Remove default styling for Chrome/Safari */
+    height: 8px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: opacity .2s;
+    float: none; /* Remove floats */
+    margin: 0; /* Reset margins */
+}
+
+/* Ensure no floats for English mode either */
+body.en input[type="range"] {
+    float: none;
+}
+
+/* Styling for the slider thumb (handle) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: pointer;
+    border: 3px solid #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: pointer;
+    border: 3px solid #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the displayed range value */
+.range-value {
+    display: inline-block;
+    width: 40px; /* Fixed width for consistent alignment */
+    text-align: center;
+    font-weight: bold;
+    color: #007bff;
+    margin: 0; /* Reset margins, flex gap handles spacing */
+    flex-shrink: 0; /* Prevent value from shrinking */
+    line-height: 22px; /* Align vertically with the slider thumb */
+}
+
+/* Calculate button styling */
+#calculateBtn {
+    display: block;
+    width: 100%;
+    padding: 15px 25px;
+    background-color: #28a745; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+    font-family: inherit; /* Ensure font inheritance from body */
+}
+
+#calculateBtn:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Results section styling */
+.results-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+/* Class to hide elements */
+.hidden {
+    display: none;
+}
+
+#riskScore {
+    font-size: 2.8em;
+    font-weight: bold;
+    color: #007bff; /* Blue color for the score */
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+/* Styling for the risk level display box */
+.risk-level {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.2em;
+    display: inline-block; /* To make background fit content */
+    margin-bottom: 20px;
+    min-width: 200px; /* Ensure minimum width for consistent look */
+}
+
+/* Color schemes for different risk levels */
+.risk-level.level-red {
+    background-color: #ffcccc;
+    color: #dc3545; /* Red */
+    border: 1px solid #dc3545;
+}
+
+.risk-level.level-yellow {
+    background-color: #fff3cd;
+    color: #ffc107; /* Yellow/Orange */
+    border: 1px solid #ffc107;
+}
+
+.risk-level.level-green {
+    background-color: #d4edda;
+    color: #28a745; /* Green */
+    border: 1px solid #28a745;
+}
+
+.risk-level.level-blue {
+    background-color: #cfe2ff;
+    color: #007bff; /* Blue */
+    border: 1px solid #007bff;
+}
+
+/* Styling for the recommendation text */
+.recommendation {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #555;
+    margin-top: 20px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 25px;
+        padding-top: 80px; /* More padding for lang-switcher on mobile */
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    /* Adjust language switcher position for small screens */
+    .lang-switcher {
+        top: 15px;
+        right: 15px;
+        left: auto; /* Ensure it stays right for RTL even on mobile */
+    }
+    body.en .lang-switcher {
+        left: 15px;
+        right: auto;
+    }
+
+    /* No specific width calc needed here due to flexbox for slider-control */
+}

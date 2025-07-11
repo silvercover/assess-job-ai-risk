@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="title">ارزیابی ریسک شغل در برابر هوش مصنوعی</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Link to Vazirmatn font from CDN for Persian text -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-VariableFont.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <!-- Language switcher moved here for better positioning -->
+        <div class="lang-switcher">
+            <button id="lang-fa" class="active">فارسی</button>
+            <button id="lang-en">English</button>
+        </div>
+
+        <header>
+            <h1 data-lang-key="main_heading">ارزیابی ریسک شغل شما در برابر هوش مصنوعی</h1>
+        </header>
+
+        <section class="description">
+            <!-- Descriptions updated to use <strong> tags in JS for bolding -->
+            <p data-lang-key="description_p1">این ابزار به شما کمک می‌کند میزان ریسک شغل خود را در برابر جایگزینی توسط هوش مصنوعی ارزیابی کنید. به هر سوال امتیازی بین <strong>۰ تا ۱۰</strong> بدهید (۰ به معنای "اصلاً" و ۱۰ به معنای "کاملاً").</p>
+            <p data-lang-key="description_p2"><strong>قوانین امتیازدهی سریع:</strong> اگر سوالی در مورد <strong>افزایش ریسک</strong> است، پاسخ "بله" یا "بیشتر اوقات" امتیاز بالا (۷-۱۰) و پاسخ "خیر" یا "کمتر اوقات" امتیاز پایین (۰-۳) دارد. اگر سوالی در مورد <strong>کاهش ریسک</strong> است، برعکس عمل کنید.</p>
+        </section>
+
+        <section class="questions-section">
+            <h2 data-lang-key="risk_increase_heading">عوامل افزایش ریسک (AI بیشتر می‌تواند جایگزین کند):</h2>
+            <!-- Question group for Repetitiveness (T) -->
+            <div class="question-group">
+                <label data-lang-key="q_t">1. وظایف اصلی شغل شما شامل کارهای روتین و بر پایه قوانین مشخص است؟ (تکراری بودن)</label>
+                <p class="question-description" data-lang-key="q_t_desc">مثال: وارد کردن داده، کپی/پیست کردن اطلاعات، انجام کارهای مشابه روزانه.</p>
+                <div class="slider-control"> <!-- New wrapper for slider and value -->
+                    <input type="range" min="0" max="10" value="5" id="qT">
+                    <span class="range-value" id="valT">5</span>
+                </div>
+            </div>
+            <!-- Question group for Predictability (P) -->
+            <div class="question-group">
+                <label data-lang-key="q_p">2. بیشتر تصمیم‌گیری‌های شغلی شما بر اساس داده‌ها یا الگوهای مشخص و قابل پیش‌بینی است؟ (قابل پیش‌بینی بودن)</label>
+                <p class="question-description" data-lang-key="q_p_desc">مثال: تحلیل گزارشات مالی با فرمول‌های ثابت، تأیید درخواست‌ها بر اساس چک‌لیست مشخص.</p>
+                <div class="slider-control">
+                    <input type="range" min="0" max="10" value="5" id="qP">
+                    <span class="range-value" id="valP">5</span>
+                </div>
+            </div>
+            <!-- Question group for Automation Potential (A) -->
+            <div class="question-group">
+                <label data-lang-key="q_a">3. آیا وظایف شما با دستورالعمل‌های ثابت و مشخص قابل انجام است؟ (قابلیت خودکارسازی)</label>
+                <p class="question-description" data-lang-key="q_a_desc">مثال: پردازش فاکتورها، رزروهای استاندارد، پاسخ به ایمیل‌های تکراری با الگوهای مشخص.</p>
+                <div class="slider-control">
+                    <input type="range" min="0" max="10" value="5" id="qA">
+                    <span class="range-value" id="valA">5</span>
+                </div>
+            </div>
+
+            <h2 data-lang-key="risk_decrease_heading">عوامل کاهش ریسک (AI کمتر می‌تواند جایگزین کند):</h2>
+            <!-- Question group for Creativity (C) -->
+            <div class="question-group">
+                <label data-lang-key="q_c">4. شغل شما به خلاقیت، نوآوری و تفکر خارج از چارچوب نیاز دارد؟ (خلاقیت)</label>
+                <p class="question-description" data-lang-key="q_c_desc">مثال: طراحی کمپین‌های بازاریابی جدید، نوشتن داستان‌های اصلی، حل مشکلات به روش‌های نوآورانه.</p>
+                <div class="slider-control">
+                    <input type="range" min="0" max="10" value="5" id="qC">
+                    <span class="range-value" id="valC">5</span>
+                </div>
+            </div>
+            <!-- Question group for Human Interaction (H) -->
+            <div class="question-group">
+                <label data-lang-key="q_h">5. آیا تعامل مستقیم انسانی (مانند همدلی، مذاکره پیچیده، رهبری تیم) برای شغل شما ضروری است؟ (تعامل انسانی)</label>
+                <p class="question-description" data-lang-key="q_h_desc">مثال: مشاوره روانشناسی، مدیریت تیم، مذاکرات تجاری پیچیده، آموزش و مربیگری.</p>
+                <div class="slider-control">
+                    <input type="range" min="0" max="10" value="5" id="qH">
+                    <span class="range-value" id="valH">5</span>
+                </div>
+            </div>
+            <!-- Question group for Intuition/Judgment (I) -->
+            <div class="question-group">
+                <label data-lang-key="q_i">6. آیا شغل شما نیاز به قضاوت پیچیده، شهود یا تصمیم‌گیری در شرایط مبهم دارد؟ (قضاوت و شهود)</label>
+                <p class="question-description" data-lang-key="q_i_desc">مثال: تشخیص بیماری‌های نادر، تصمیم‌گیری در مورد استراتژی‌های حقوقی پیچیده، ارزیابی ریسک‌های ناشناخته.</p>
+                <div class="slider-control">
+                    <input type="range" min="0" max="10" value="5" id="qI">
+                    <span class="range-value" id="valI">5</span>
+                </div>
+            </div>
+
+            <!-- Button to calculate the risk score -->
+            <button id="calculateBtn" data-lang-key="calculate_button">محاسبه ریسک</button>
+        </section>
+
+        <!-- Results section - initially hidden -->
+        <section class="results-section hidden">
+            <!-- Display for the calculated risk score -->
+            <h2 data-lang-key="your_risk_score">امتیاز ریسک شما: <span id="riskScore">--</span></h2>
+            <!-- Display for the risk level interpretation -->
+            <div class="risk-level" id="riskLevel">
+                <span data-lang-key="risk_interpretation">---</span>
+            </div>
+            <!-- Display for the recommendation text -->
+            <p class="recommendation" id="recommendation_text" data-lang-key="recommendation_text">---</p>
+        </section>
+    </div>
+
+    <!-- Link to the JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
